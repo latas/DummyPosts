@@ -1,6 +1,4 @@
-package com.babylon.testproject.mvp_test;
-
-import android.support.test.runner.AndroidJUnit4;
+package com.babylon.testproject.mvptest;
 
 import com.babylon.testproject.data.interactors.Repository;
 import com.babylon.testproject.data.models.PostComments;
@@ -9,18 +7,14 @@ import com.babylon.testproject.ui.DetailsScreen;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
 
 /**
  * Created by Antonis Latas
  */
-@RunWith(AndroidJUnit4.class)
 public class PostDetailsPresenterTest {
 
     @Mock
@@ -45,8 +39,8 @@ public class PostDetailsPresenterTest {
 
         postDetailsPresenter.loadComments();
 
-        verify(screen).showCommentNumbers(82);
-        verify(screen, never()).onCommentsError();
+        Mockito.verify(screen).showCommentNumbers(82);
+        Mockito.verify(screen, Mockito.never()).onCommentsError();
     }
 
     @Test
@@ -58,8 +52,8 @@ public class PostDetailsPresenterTest {
         };
         PostDetailsPresenter postDetailsPresenter = new PostDetailsPresenter(screen, repo);
         postDetailsPresenter.loadComments();
-        verify(screen).onCommentsError();
-        verify(screen,never()).showCommentNumbers(anyLong());
+        Mockito.verify(screen).onCommentsError();
+        Mockito.verify(screen, Mockito.never()).showCommentNumbers(Matchers.anyLong());
     }
 
 }
