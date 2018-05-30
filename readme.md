@@ -1,4 +1,4 @@
-## Babylon Posts
+## Dummy Posts
 
 Technical project for the position of Android developer in Babylon Health.
 
